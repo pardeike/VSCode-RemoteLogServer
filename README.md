@@ -9,18 +9,13 @@ Press <CTRL+F12> to start a server, and connect to the server via telnet or sock
 Example python code:
 
 ```
-# REMOTE LOG PYTHON CLIENT DEMO
 import socket
-from  json import dumps
-from time import sleep
-
-HOST, PORT = 'localhost', 8888
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-    s.connect((HOST, PORT))
-    for i in range(1, 3):
-        s.sendall('Hello World\n')
-        sleep(1)
+    s.connect(('localhost', 8888))
+    s.send('Hello World\n'.encode())
 ```
+
+You can also use `telnet localhost 8888` from bash. Please note that the server does not run in line buffering mode so you can send partial lines.
 
 ## Features
 
