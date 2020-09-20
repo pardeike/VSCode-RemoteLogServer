@@ -12,7 +12,7 @@ export class RemoteLogServer {
 			socket.setKeepAlive(true)
 
 			let remoteAddress = socket.remoteAddress + ':' + socket.remotePort?.toString()
-			vscode.window.showInformationMessage(`Logger connected: ${remoteAddress}`)
+			vscode.window.setStatusBarMessage(`Logger connected: ${remoteAddress}`, 1000)
 
 			socket.on('data', (data: Buffer) => {
 				if (!this.enabled) return
@@ -27,11 +27,11 @@ export class RemoteLogServer {
 			})
 
 			socket.on('end', () => {
-				vscode.window.showInformationMessage(`Logger done: ${remoteAddress}`)
+				vscode.window.setStatusBarMessage(`Logger done: ${remoteAddress}`, 1000)
 			})
 
 			socket.on('close', (err) => {
-				vscode.window.showInformationMessage(`Logger disconnected: ${remoteAddress}${err ? `, error ${err}` : ''}`)
+				vscode.window.setStatusBarMessage(`Logger disconnected: ${remoteAddress}${err ? `, error ${err}` : ''}`, 1000)
 			})
 		})
 	}
@@ -40,18 +40,18 @@ export class RemoteLogServer {
 		this.enabled = true
 		let conf = vscode.workspace.getConfiguration('RemoteLogServer')
 		this.server.listen(conf.get('port'), conf.get('host'), () => {
-			vscode.window.showInformationMessage(`Log server started: ${JSON.stringify(this.server.address())}`)
+			vscode.window.setStatusBarMessage(`Log server started: ${JSON.stringify(this.server.address())}`, 3000)
 		})
 	}
 
 	public stop() {
 		this.enabled = false
 		this.server.close()
-		vscode.window.showInformationMessage('Log server stopped')
+		vscode.window.setStatusBarMessage('Log server stopped', 1000)
 	}
 
 	public toggle() {
 		this.enabled = !this.enabled
-		vscode.window.showInformationMessage(this.enabled ? 'Log server resumes' : 'Log server is paused')
+		vscode.window.setStatusBarMessage(this.enabled ? 'Log server resumes' : 'Log server is paused', 2000)
 	}
 }

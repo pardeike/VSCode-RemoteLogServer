@@ -6,7 +6,6 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(vscode.commands.registerCommand('extension.start_rls', () => { rls.start() }))
 	context.subscriptions.push(vscode.commands.registerCommand('extension.stop_rls', () => { rls.stop() }))
 	context.subscriptions.push(vscode.commands.registerCommand('extension.toggle_rls', () => { rls.toggle() }))
-	vscode.window.showInformationMessage('Log server prepared')
 }
 
 export function deactivate() { }
