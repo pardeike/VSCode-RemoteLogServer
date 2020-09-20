@@ -19,8 +19,9 @@ You can also use `telnet localhost 8888` from bash. Please note that the server 
 
 ## Features
 
-1. [CTRL+F12] to start a server
-3. [F12] to toggle server pause/resume
+1. [CTRL+F12] to start the server
+2. [SHIFT+F12] to stop the server
+3. [F12] to toggle the server (pause/resume)
 
 <!-- ## Requirements
 
