@@ -46,6 +46,10 @@
 				"key": "ctrl+f12"
 			},
 			{
+				"command": "extension.stop_rls",
+				"key": "shift+f12"
+			},
+			{
 				"command": "extension.toggle_rls",
 				"key": "f12"
 			}
