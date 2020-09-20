@@ -2,7 +2,7 @@
 	"name": "remote-log-server",
 	"displayName": "Remote Log Server",
 	"description": "Accept log data on a socket and see the log in realtime in a document without touching the disk",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"publisher": "pardeike",
 	"engines": {
 		"vscode": "^1.43.0"
